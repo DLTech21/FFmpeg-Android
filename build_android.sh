@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export NDK=/Users/luoye/Library/Android/sdk/ndk-bundle
+export NDK=/Users/donal/Library/Android/sdk/ndk-bundle
 export PREFIX=`pwd`/build
 export SONAME=libbzffmpeg.so
 
