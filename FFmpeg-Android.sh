@@ -29,30 +29,33 @@ CFLAGS="-O3 -Wall -mthumb -pipe -fpic -fasm \
 -DANDROID -DNDEBUG"
 
 checkout_ffmpeg() {
-  if [ ! -d ffmpeg ]; then
+  # if [ ! -d ffmpeg ]; then
     git clone https://github.com/FFmpeg/FFmpeg.git 
-  fi
+  # fi
 
-  pushd $FFMPEGSOURCE
-    git reset --hard
-    git clean -f -d
-    git checkout `cat ../ffmpeg-version`
-    git log --pretty=format:%H -1 > ../ffmpeg-version
-  popd
+  # pushd $FFMPEGSOURCE
+  #   git reset --hard
+  #   git clean -f -d
+  #   git checkout `cat ../ffmpeg-version`
+  #   git log --pretty=format:%H -1 > ../ffmpeg-version
+  # popd
 }
 
 checkout_x264() {
-  if [ ! -d x264 ]; then
+  # if [ ! -d x264 ]; then
     git clone https://github.com/mirror/x264.git
-  fi
+  # fi
 
-  pushd $X264SOURCE
-    git reset --hard
-    git clean -f -d
-    git checkout `cat ../x264-version`
-    git log --pretty=format:%H -1 > ../x264-version
-  popd
+  # pushd $X264SOURCE
+  #   git reset --hard
+  #   git clean -f -d
+  #   git checkout `cat ../x264-version`
+  #   git log --pretty=format:%H -1 > ../x264-version
+  # popd
 }
+
+checkout_x264
+checkout_ffmpeg
 
 prepare_ndk() {
   $ANDROID_NDK/build/tools/make_standalone_toolchain.py --force --arch=$ARCH --api=21 --install-dir=$TOOLCHAIN
@@ -313,8 +316,7 @@ build_version() {
   build_ffmpeg $VERSION
 }
 
-checkout_x264
-checkout_ffmpeg
+
 
 #build_version "armv7"
 build_version "arm64_v8a"
